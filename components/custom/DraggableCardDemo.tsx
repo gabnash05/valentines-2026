@@ -3,8 +3,7 @@ import {
   DraggableCardBody,
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 
 import { Dancing_Script } from "next/font/google";
 
@@ -68,34 +67,23 @@ export default function Home() {
     
     return (
         <>
-            <div className="fixed inset-0 -z-50 overflow-hidden">
-                <BackgroundGradientAnimation
-                    gradientBackgroundStart="rgb(255, 240, 245)"  // Light pink
-                    gradientBackgroundEnd="rgb(255, 228, 230)"    // Light rose
-                    firstColor="255, 182, 193"    // Light pink
-                    secondColor="255, 105, 180"   // Hot pink
-                    thirdColor="219, 112, 147"    // Pale violet red
-                    fourthColor="255, 192, 203"   // Pink
-                    fifthColor="255, 160, 122"    // Light salmon
-                    pointerColor="255, 20, 147"   // Deep pink
-                    size="80%"
-                    blendingValue="overlay"
-                    interactive={true}
-                    containerClassName="fixed inset-0 z-2"
-                >
-                    <div className="absolute inset-0" />
-                </BackgroundGradientAnimation>
 
-                <div className="absolute inset-0 bg-linear-to-b from-white/10 via-transparent to-white/5" />
-            </div>
-
-            <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">                
+            <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">
+                <div className="fixed inset-0 z-1 overflow-hidden bg-red-100">
+                    <BackgroundRippleEffect 
+                        rows={15}
+                        cols={27}
+                        cellSize={56}
+                    />
+                </div>
+                
                 <div className="relative w-full h-screen">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
-                        <TextHoverEffect 
-                            text="Will You Be My Valentine?" 
-                        />
-                    </div>
+                    <p
+                        className={`${dancingScript.className} z-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                        max-w-2xl text-center text-8xl font-extrabold text-red-600 tracking-wide drop-shadow-lg`}
+                    >
+                        Will You Be My Valentine?
+                    </p>
                 </div>
                 {items.map((item) => (
                     <DraggableCardBody className={item.className} key={item.image}>
