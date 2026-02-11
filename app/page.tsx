@@ -95,6 +95,9 @@ export default function Home() {
                         <TextHoverEffect 
                             text="Will You Be My Valentine?" 
                         />
+                        <span className={`${dancingScript.className} absolute top-40 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center font-black tracking-tighter text-6xl lg:text-6xl text-rose-300`}>
+                            Again... hehe
+                        </span>
                     </div>
                 </div>
                 {items.map((item) => (
